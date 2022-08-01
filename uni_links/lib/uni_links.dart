@@ -57,3 +57,12 @@ Stream<String?> getLinksStream() => linkStream;
 /// not emit that initial uri - query either the `getInitialUri` instead.
 @Deprecated('Use [uriLinkStream]')
 Stream<Uri?> getUriLinksStream() => uriLinkStream;
+
+void startNFCSession(String dialogMsg) {
+  UniLinksPlatform.instance.startNFCSession(dialogMsg);
+}
+
+///iOS only, stop listening for NFC URI payloads
+void stopNFCSession() {
+  UniLinksPlatform.instance.stopNFCSession();
+}

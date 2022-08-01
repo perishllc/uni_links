@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/services.dart';
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
 
@@ -6,11 +8,23 @@ class MethodChannelUniLinks extends UniLinksPlatform {
   static const EventChannel _eChannel = EventChannel('uni_links/events');
 
   @override
-  Future<String?> getInitialLink() =>
-      _mChannel.invokeMethod<String?>('getInitialLink');
+  Future<String?> getInitialLink() => _mChannel.invokeMethod<String?>('getInitialLink');
 
   @override
-  late final Stream<String?> linkStream = _eChannel
-      .receiveBroadcastStream()
-      .map<String?>((dynamic link) => link as String?);
+  late final Stream<String?> linkStream =
+      _eChannel.receiveBroadcastStream().map<String?>((dynamic link) => link as String?);
+
+  ///iOS only, start listening for NFC URI payloads
+  void startNFCSession(String dialogMsg) {
+    if (Platform.isIOS) {
+      _mChannel.invokeMethod('startNFCSession', dialogMsg);
+    }
+  }
+
+  ///iOS only, stop listening for NFC URI payloads
+  void stopNFCSession() {
+    if (Platform.isIOS) {
+      _mChannel.invokeMethod('stopNFCSession');
+    }
+  }
 }

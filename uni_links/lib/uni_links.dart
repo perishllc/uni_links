@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io' show Platform;
 
 import 'package:uni_links_platform_interface/uni_links_platform_interface.dart';
 

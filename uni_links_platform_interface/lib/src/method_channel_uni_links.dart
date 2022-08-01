@@ -17,14 +17,14 @@ class MethodChannelUniLinks extends UniLinksPlatform {
   ///iOS only, start listening for NFC URI payloads
   void startNFCSession(String dialogMsg) {
     if (Platform.isIOS) {
-      _mChannel.invokeMethod('startNFCSession', dialogMsg);
+      _mChannel.invokeMethod<String?>('startNFCSession', dialogMsg);
     }
   }
 
   ///iOS only, stop listening for NFC URI payloads
   void stopNFCSession() {
     if (Platform.isIOS) {
-      _mChannel.invokeMethod('stopNFCSession');
+      _mChannel.invokeMethod<String?>('stopNFCSession');
     }
   }
 }

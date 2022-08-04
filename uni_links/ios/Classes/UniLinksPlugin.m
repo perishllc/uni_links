@@ -176,7 +176,7 @@ static id _instance;
     if (@available(iOS 11, *)) {
         if(NFCNDEFReaderSession.readingAvailable){
             if (_nfcReaderSession == nil ){
-                _nfcReaderSession = [[NFCNDEFReaderSession alloc] initWithDelegate:self queue:nil invalidateAfterFirstRead:YES];
+                _nfcReaderSession = [[NFCNDEFReaderSession alloc] initWithDelegate:self queue:nil invalidateAfterFirstRead:NO];
                 _nfcReaderSession.alertMessage = _dialogMessage;
             }
             [_nfcReaderSession beginSession];

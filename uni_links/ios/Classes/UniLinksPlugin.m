@@ -10,6 +10,7 @@ static NSString *const kEventsChannel = @"uni_links/events";
 
 @implementation UniLinksPlugin {
   FlutterEventSink _eventSink;
+  API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(macos, watchos, tvos) NFCCallbacks* _nfcCallbacks;
 }
 
 static id _instance;
